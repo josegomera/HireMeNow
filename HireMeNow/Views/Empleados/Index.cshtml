@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<HireMeNow.Models.Empleado>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Empleados";
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
@@ -15,7 +15,8 @@
 <hr />
 <h2>Listado de Empleados</h2>
 <hr />
-<table class="table" id="empleados">
+
+<table class="table display nowrap" id="empleados">
     <thead class="thead-light">
         <tr>
             <th>
@@ -72,7 +73,12 @@
 {
     <script>
         $(document).ready(function () {
-            $("#empleados").DataTable();
+            $("#empleados").DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
         });
     </script>
 }
