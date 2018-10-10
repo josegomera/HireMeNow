@@ -1,0 +1,56 @@
+﻿@model HireMeNow.Models.NivelRiesgo
+
+@{
+    ViewBag.Title = "Nivel Riesgo";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+<style>
+    h2 {
+        text-align: center;
+    }
+</style>
+<hr />
+<h2>Editar Niveles de Riesgos</h2>
+<hr />
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        <div class="row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Creado, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Creado, new { htmlAttributes = new { @class = "form-control", @disabled = "Disabled" } })
+                        @Html.ValidationMessageFor(model => model.Creado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-outline-success">Editar</button>
+                @Html.ActionLink("Volver a la lista", "Index", "", htmlAttributes: new { @class = "btn btn-outline-info" })
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

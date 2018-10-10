@@ -1,0 +1,155 @@
+﻿@model IEnumerable<HireMeNow.Models.Candidato>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<style>
+    h2, th, td {
+        text-align: center;
+    }
+</style>
+
+<hr />
+
+<h2>Listado de Candidatos</h2>
+<hr />
+<p>
+    @Html.ActionLink("Nuevo Candidato", "Create", "", htmlAttributes: new { @class = "btn btn-outline-primary" })
+</p>
+<table class="table" id="candidato">
+    <thead class="thead-light">
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Capacitaciones.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Experiencia.Empresa)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Puestos.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cedula)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Puestos.Nombre)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Salario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RecomendadoPor)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Creado)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Capacitaciones.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Experiencia.Empresa)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Puestos.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cedula)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Puestos.Nombre)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Salario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecomendadoPor)
+                </td>*@
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Creado)
+                </td>*@
+            <td>
+                @*@Html.ActionLink("Editar", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-success" })*@
+                @Html.ActionLink("Detalles", "details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-info" })
+                @*@Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-danger" })*@
+                <button data-id="@item.Id" class="btn btn-outline-success js-new">Nuevo Empleado</button>
+                <button data-candidato-id="@item.Id" class="btn btn-outline-danger js-delete">Eliminar</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts
+{
+   <script>
+       $(document).ready(function () {
+
+           var table = $("#candidato").DataTable();
+
+           $("#candidato").on("click", ".js-new", function () {
+               var button = $(this);
+
+               bootbox.confirm("Seguro que deseas contratar este candidato", function (result) {
+                   if (result) {
+                       $.ajax({
+                           url: "/Empleados/NewEmpleado/" + button.attr("data-id"),
+                           method: "POST",
+                           success: function () {
+                               $.ajax({
+                                   url: "/Candidatos/Delete/" + button.attr("data-id"),
+                                   method: "POST",
+                                   success: function () {
+                                       table.row(button.parents("tr")).remove().draw();
+                                   }
+                               });
+                           }
+                       });
+                   }
+               });
+           });
+
+           $("#candidato").on("click", ".js-delete", function () {
+               var button = $(this);
+
+               bootbox.confirm("Seguro que deseas eliminar este candidato", function (result) {
+                   if (result) {
+                       $.ajax({
+                           url: "/Candidatos/Delete/" + button.attr("data-candidato-id"),
+                           method: "POST",
+                           success: function () {
+                               table.row(button.parents("tr")).remove().draw();
+                           }
+                       });
+                   }
+               });
+           });
+
+       });
+    </script>
+}

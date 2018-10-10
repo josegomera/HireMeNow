@@ -1,0 +1,133 @@
+﻿@model HireMeNow.ViewModel.EmpleadosViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<style>
+    h2 {
+        text-align: center;
+    }
+</style>
+<hr />
+<h2>Detalles del Empleado</h2>
+<hr />
+
+
+<div>
+    <dl class="dl-horizontal">
+        <hr />
+        <h5>Informacion Personal:</h5>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empleados.Cedula)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empleados.Cedula)
+                </dd>
+            </div>
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empleados.Nombres)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empleados.Nombres)
+                </dd>
+            </div>
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empleados.Apellidos)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empleados.Apellidos)
+                </dd>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empleados.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empleados.Email)
+                </dd>
+            </div>
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empleados.Puestos.Nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empleados.Puestos.Nombre)
+                </dd>
+            </div>
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empleados.FechaIngreso)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empleados.FechaIngreso)
+                </dd>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empleados.Puestos.Departamentos.Departamentos)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empleados.Puestos.Departamentos.Departamentos)
+                </dd>
+            </div>
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empleados.SalarioMensual)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empleados.SalarioMensual)
+                </dd>
+            </div>
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empleados.Estados.Estados)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empleados.Estados.Estados)
+                </dd>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empleados.Creado)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empleados.Creado)
+                </dd>
+            </div>
+        </div>
+
+    </dl>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Empleados.Id }, htmlAttributes: new { @class = "btn btn-outline-success" })
+        @Html.ActionLink("Volver a la lista", "Index", "", htmlAttributes: new { @class = "btn btn-outline-info" })
+    </div>
+</div>

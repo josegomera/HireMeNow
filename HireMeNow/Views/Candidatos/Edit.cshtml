@@ -1,0 +1,245 @@
+﻿@model HireMeNow.ViewModel.CandidatosViewModel
+
+@{
+    ViewBag.Title = "Candidato";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<style>
+    h2 {
+        text-align: center;
+    }
+</style>
+
+<hr />
+<h2>Editar Candidato</h2>
+<hr />
+
+@using (Html.BeginForm("Edit", "Candidatos"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Candidatos.Id)
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Informacion del Solicitante</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Cedula, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Cedula, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Cedula, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Nombres, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Nombres, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Apellidos, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Apellidos, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Apellidos, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.PuestosId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Candidatos.PuestosId, new SelectList(Model.Puestos, "Id", "Nombre"), "Puestos", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Candidatos.PuestosId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Salario, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Salario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Salario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.RecomendadoPor, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.RecomendadoPor, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.RecomendadoPor, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        @* CAPACITACIONES INPUTS *@
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Capacitaciones</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Capacitaciones.Nombre, htmlAttributes: new { @class = "control-label col-md-8" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Capacitaciones.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Capacitaciones.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Capacitaciones.NivelId, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Candidatos.Capacitaciones.NivelId, new SelectList(Model.Niveles, "Id", "Nombre"), "Niveles", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Capacitaciones.NivelId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Capacitaciones.FechaDesde, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Capacitaciones.FechaDesde, new { htmlAttributes = new { @class = "form-control", @id = "Cstartdate" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Capacitaciones.FechaDesde, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Capacitaciones.FechaHasta, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Capacitaciones.FechaHasta, new { htmlAttributes = new { @class = "form-control", @id = "Cenddate" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Capacitaciones.FechaHasta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Capacitaciones.Institucion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Capacitaciones.Institucion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Capacitaciones.Institucion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        @* EXPERIENCIA INPUTS *@
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Experiencia Laboral</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Experiencias.Empresa, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Experiencias.Empresa, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Experiencias.Empresa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Experiencias.PuestoOcupado, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Experiencias.PuestoOcupado, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Experiencias.PuestoOcupado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Experiencias.FechaDesde, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Experiencias.FechaDesde, new { htmlAttributes = new { @class = "form-control", @id = "Estartdate" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Experiencias.FechaDesde, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Experiencias.FechaHasta, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Experiencias.FechaHasta, new { htmlAttributes = new { @class = "form-control", @id = "Eenddate" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Experiencias.FechaHasta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Candidatos.Experiencias.Salario, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Candidatos.Experiencias.Salario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Candidatos.Experiencias.Salario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Candidatos.Creado, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Candidatos.Creado, new { htmlAttributes = new { @class = "form-control", @disabled = "Disabled" } })
+                        @Html.ValidationMessageFor(model => model.Candidatos.Creado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-outline-success">Editar</button>
+                    @Html.ActionLink("Back to List", "Index", "", htmlAttributes: new { @class = "btn btn-outline-info" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        //Comparador de fechas de Capacitaciones
+        $("#Cenddate").change(function () {
+            var date = moment($("#Cstartdate").val());
+            var now = moment($("#Cenddate").val());
+
+            if (now < date) {
+                alert("La fecha de salida no concuerda con la fecha de entrada");
+                $("#Cenddate").val("");
+            }
+        });
+        //Comparador de fechas de la Experiencia
+        $("#Eenddate").change(function () {
+            var date = moment($("#Estartdate").val());
+            var now = moment($("#Eenddate").val());
+
+            if (now < date) {
+                alert("La fecha de salida no concuerda con la fecha de entrada");
+                $("#Eenddate").val("");
+            }
+        });
+
+    </script>
+}

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<HireMeNow.Models.Empleado>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<style>
+    h2, th, td {
+        text-align: center;
+    }
+</style>
+
+<hr />
+<h2>Listado de Empleados</h2>
+<hr />
+<table class="table" id="empleados">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Puestos.Nombre)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Puestos.Nombre)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaIngreso)
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-success" })
+            @Html.ActionLink("Detalles", "details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-info" })
+        </td>
+    </tr>
+        }
+</table>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#empleados").DataTable();
+        });
+    </script>
+}

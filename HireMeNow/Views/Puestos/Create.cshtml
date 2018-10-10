@@ -1,0 +1,99 @@
+﻿@model HireMeNow.ViewModel.PuestoViewModel
+
+@{
+    ViewBag.Title = "Puestos";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<style>
+    h2 {
+        text-align: center;
+    }
+</style>
+
+<hr />
+<h2>Nuevo Puesto</h2>
+<hr />
+
+
+
+@using (Html.BeginForm("Create", "Puestos"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Puestos.Nombre, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Puestos.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Puestos.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group  col-md-4">
+                @Html.LabelFor(model => model.Puestos.NivelRiesgosId, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Puestos.NivelRiesgosId, new SelectList(Model.NivelR, "Id", "Nombre"), "Nivel Riesgo", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Puestos.NivelRiesgosId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Puestos.CompetenciasId, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Puestos.CompetenciasId, new SelectList(Model.Competencias, "Id", "Nombre"), "Competencias", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Puestos.CompetenciasId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Puestos.DepartamentosId, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Puestos.DepartamentosId, new SelectList(Model.Departamentos, "Id", "Departamentos"), "Departamentos", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Puestos.DepartamentosId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Puestos.SalarioMin, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Puestos.SalarioMin, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Puestos.SalarioMin, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Puestos.SalarioMax, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Puestos.SalarioMax, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Puestos.SalarioMax, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Puestos.EstadoId, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Puestos.EstadoId, new SelectList(Model.Estados, "Id", "Estados"), "Estados", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Puestos.EstadoId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-outline-success">Guardar</button>
+                @Html.ActionLink("Volver a la lista", "Index", "", htmlAttributes: new { @class = "btn btn-outline-info" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<HireMeNow.Models.NivelRiesgo>
+
+@{
+    ViewBag.Title = "Niveles Riesgos";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+<style>
+    h2, th, td {
+        text-align: center;
+    }
+</style>
+
+<hr />
+
+<h2>Listado Niveles de Riesgos</h2>
+<hr />
+
+<p>
+    @Html.ActionLink("Agregar Riesgo", "Create", "", htmlAttributes: new { @class = "btn btn-outline-primary" })
+</p>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Creado)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Creado)
+            </td>*@
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-success" }) 
+            </td>
+        </tr>
+    }
+
+</table>

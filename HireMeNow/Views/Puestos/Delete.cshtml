@@ -1,0 +1,36 @@
+﻿@model HireMeNow.ViewModel.PuestoViewModel
+
+@{
+    ViewBag.Title = "Puestos";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<style>
+    h2 {
+        text-align: center;
+    }
+</style>
+<hr />
+<h2>Eliminar Puesto</h2>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dd>
+            <h6>Seguro que deseas elimiar este puesto?  @Html.DisplayFor(model => model.Puestos.Nombre)</h6>
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                @Html.ActionLink("Back to List", "Index", "", htmlAttributes: new { @class = "btn btn-outline-info" })
+            </div>
+        </div>
+    }
+</div>
