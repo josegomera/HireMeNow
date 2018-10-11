@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using CrystalDecisions.CrystalReports.Engine;
 using HireMeNow.DAL;
 using HireMeNow.Models;
 using HireMeNow.ViewModel;
@@ -20,30 +19,11 @@ namespace HireMeNow.Controllers
         public ActionResult Index()
         {
             var Empleado = db.Empleados
-                .Include(c => c.Puestos)
-                .Include(c => c.Estados);
+                 .Include(c => c.Puestos)
+                 .Include(c => c.Estados);
 
             return View(Empleado.ToList());
-        }
 
-        public ActionResult exportReport()
-        {
-            ReportDocument rd = new ReportDocument();
-            rd.Load(Path.Combine(Server.MapPath("~/Report"), "Empleados.rpt"));
-            rd.SetDataSource(db.Empleados.ToList());
-            Response.Buffer = false;
-            Response.ClearContent();
-            Response.ClearHeaders();
-            try
-            {
-                Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-                stream.Seek(0, SeekOrigin.Begin);
-                return File(stream, "application/pdf", "Employee_list.pdf");
-            }
-            catch
-            {
-                throw;
-            }
         }
 
 

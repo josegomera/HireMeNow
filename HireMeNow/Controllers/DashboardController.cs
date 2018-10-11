@@ -14,13 +14,11 @@ namespace HireMeNow.Controllers
         // GET: Dashboard
         public ActionResult Index()
         {
-            var candidatos = db.Candidatos
-               .Include(c => c.Puestos)
-               .Include(c => c.Capacitaciones)
-               .Include(c => c.Capacitaciones.Nivel)
-               .Include(c => c.Experiencias);
+            var Empleado = db.Empleados
+                .Include(c => c.Puestos)
+                .Include(c => c.Estados);
 
-            return View(candidatos.ToList());
+            return View(Empleado.ToList());
         }
 
     }
