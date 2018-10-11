@@ -9,6 +9,15 @@
     h2, th, td {
         text-align: center;
     }
+
+    .bootbox .modal-header h4 {
+        float: none;
+    }
+
+    .bootbox .modal-header .close {
+        position: absolute;
+        right: 15px;
+    }
 </style>
 
 <hr />
@@ -107,50 +116,63 @@
 
 @section scripts
 {
-   <script>
-       $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-           var table = $("#candidato").DataTable();
+            var table = $("#candidato").DataTable();
 
-           $("#candidato").on("click", ".js-new", function () {
-               var button = $(this);
+            $("#candidato").on("click", ".js-new", function () {
+                var button = $(this);
 
-               bootbox.confirm("Seguro que deseas contratar este candidato", function (result) {
-                   if (result) {
-                       $.ajax({
-                           url: "/Empleados/NewEmpleado/" + button.attr("data-id"),
-                           method: "POST",
-                           success: function () {
-                               $.ajax({
-                                   url: "/Candidatos/Delete/" + button.attr("data-id"),
-                                   method: "POST",
-                                   success: function () {
-                                       table.row(button.parents("tr")).remove().draw();
-                                       window.location.href = "/Empleados";
-                                   }
-                               });
-                           }
-                       });
-                   }
-               });
-           });
+                bootbox.confirm("Seguro que deseas contratar este candidato", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/Empleados/NewEmpleado/" + button.attr("data-id"),
+                            method: "POST",
+                            success: function () {
+                                $.ajax({
+                                    url: "/Candidatos/Delete/" + button.attr("data-id"),
+                                    method: "POST",
+                                    success: function () {
+                                        table.row(button.parents("tr")).remove().draw();
+                                        window.location.href = "/Empleados";
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
 
-           $("#candidato").on("click", ".js-delete", function () {
-               var button = $(this);
+            $("#candidato").on("click", ".js-delete", function () {
+                var button = $(this);
+               
+                bootbox.confirm({
+                    title: "Eliminar Candidato",
+                    message: "Seguro que deseas eliminar este candidato?",
+                    buttons: {
+                        cancel: {
+                            label: '<i class="fa fa-times"></i> Cancel'
+                        },
+                        confirm: {
+                            label: '<i class="fa fa-check"></i> Confirm'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/Candidatos/Delete/" + button.attr("data-candidato-id"),
+                                method: "POST",
+                                success: function () {
+                                    table.row(button.parents("tr")).remove().draw();
 
-               bootbox.confirm("Seguro que deseas eliminar este candidato", function (result) {
-                   if (result) {
-                       $.ajax({
-                           url: "/Candidatos/Delete/" + button.attr("data-candidato-id"),
-                           method: "POST",
-                           success: function () {
-                               table.row(button.parents("tr")).remove().draw();
-                           }
-                       });
-                   }
-               });
-           });
+                                }
+                            });
+                        }
+                    }
+                });
+            });
 
-       });
+        });
     </script>
 }

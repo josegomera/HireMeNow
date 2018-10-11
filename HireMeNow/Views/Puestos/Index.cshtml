@@ -10,6 +10,15 @@
     h2, th, td {
         text-align: center;
     }
+
+    .bootbox .modal-header h4 {
+        float: none;
+    }
+
+    .bootbox .modal-header .close {
+        position: absolute;
+        right: 15px;
+    }
 </style>
 
 <hr />
@@ -96,19 +105,31 @@
         $(document).ready(function () {
 
            var table = $("#puestos").DataTable();
-           
+
             $("#puestos").on("click", ".js-delete", function () {
                 var button = $(this);
 
-                bootbox.confirm("Seguro que deseas eliminar el Puesto", function (result) {
-                    if (result) {
-                        $.ajax({
-                            url: "/Puestos/Delete/" + button.attr("data-puesto-id"),
-                            method: "POST",
-                            success: function () {
-                                table.row(button.parents("tr")).remove().draw();
-                            }
-                        });
+                bootbox.confirm({
+                    title: "Eliminar Puesto",
+                    message: "Seguro que deseas eliminar el Puesto?",
+                    buttons: {
+                        cancel: {
+                            label: '<i class="fa fa-times"></i> Cancel'
+                        },
+                        confirm: {
+                            label: '<i class="fa fa-check"></i> Confirm'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/Puestos/Delete/" + button.attr("data-puesto-id"),
+                                method: "POST",
+                                success: function () {
+                                    table.row(button.parents("tr")).remove().draw();
+                                }
+                            });
+                        }
                     }
                 });
             });

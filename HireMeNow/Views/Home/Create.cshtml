@@ -203,7 +203,7 @@
         <div class="row">
             <div class="form-group col-md-6">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" data-candidato-id="@Model.Candidatos.Id" class="btn btn-outline-success" id="Guardar">Guardar</button>
+                    <button type="submit" class="btn btn-outline-success">Guardar</button>
                 </div>
             </div>
         </div>
@@ -274,34 +274,6 @@
             }
             return cedulaValida;
         }
-
-        $("#Guardar").on("click", function () {
-            //bootbox.alert({
-            //    title: "Congratulations",
-            //    message: "You just did one step foward to your new dream job. Thanks for submit your informaction, we will contact you within 5 days!! ",
-            //    className: 'bb-alternate-modal',
-            //    callback: function () { }
-            //});
-            $("#Guardar").on("click", function () {
-                var button = $(this);
-
-                bootbox.confirm({
-                    message: message: "You just did one step foward to your new dream job. Thanks for submit your informaction, we will contact you within 5 days!! ",
-                    callback: function (result) {
-                        if (result) {
-                            $.ajax({
-                                url: "/Home/Create/" + button.attr("data-puesto-id"),
-                                method: "POST",
-                                success: function () {
-                                    table.row(button.parents("tr")).remove().draw();
-                                }
-                            });
-                        }
-                    }
-
-                });
-            });
-        });
     </script>
 }
 
