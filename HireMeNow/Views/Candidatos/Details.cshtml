@@ -5,204 +5,204 @@
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
-<style>
-    h2 {
-        text-align: center;
-    }
-</style>
-<hr />
-<h2>Detalles del Candidato</h2>
-<hr />
-
-<div class="form-group">
-    <dl class="dl-horizontal">
-        <hr />
-        <h5>Informacion Personal:</h5>
-        <hr />
-
-        <div class="row">
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Cedula)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Cedula)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Nombres)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Nombres)
-                </dd>
-
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Apellidos)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Apellidos)
-                </dd>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Email)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Email)
-                </dd>
-            </div>
-            <div class="col-md-4">
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.RecomendadoPor)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.RecomendadoPor)
-                </dd>
-            </div>
-
-        </div>
-
-
-
-        <hr />
-        <h5>Capacitacion:</h5>
-        <hr />
-
-
-        <div class="row">
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Capacitaciones.Nombre)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Capacitaciones.Nombre)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Capacitaciones.Nivel)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Capacitaciones.Nivel.Nombre)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Capacitaciones.FechaDesde)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Capacitaciones.FechaDesde)
-                </dd>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Capacitaciones.FechaHasta)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Capacitaciones.FechaHasta)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Capacitaciones.Institucion)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Capacitaciones.Institucion)
-                </dd>
-            </div>
-        </div>
-
-        <hr />
-        <h5>Experiencia:</h5>
-        <hr />
-
-        <div class="row">
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Experiencias.Empresa)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Experiencias.Empresa)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Experiencias.PuestoOcupado)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Experiencias.PuestoOcupado)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Experiencias.Salario)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Experiencias.Salario)
-                </dd>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Experiencias.FechaDesde)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Experiencias.FechaDesde)
-                </dd>
-            </div>
-            <div class="col-md-4">
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Experiencias.FechaHasta)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Experiencias.FechaHasta)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Candidatos.Creado)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Candidatos.Creado)
-                </dd>
-            </div>
-        </div>
-    </dl>
+<div class="d-flex align-items-center p-3 my-3 text-black-50 bg-info rounded shadow-sm">
+    <div class="lh-100">
+        <h2 class="mb-3 text-white lh-100">Detalles del Candidato</h2>
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-8">
-        @*@Html.ActionLink("Editar", "Edit", new { id = Model.Candidatos.Id }, htmlAttributes: new { @class = "btn btn-outline-success" })*@
-        @Html.ActionLink("Volver a la lista", "Index", "", htmlAttributes: new { @class = "btn btn-outline-info" })
+
+<div class="my-3 p-3 bg-white rounded shadow-lg">
+    <div class="form-group">
+        <dl class="dl-horizontal">
+            <hr />
+            <h5>Informacion Personal:</h5>
+            <hr />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Cedula)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Cedula)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Nombres)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Nombres)
+                    </dd>
+
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Apellidos)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Apellidos)
+                    </dd>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Email)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.RecomendadoPor)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.RecomendadoPor)
+                    </dd>
+                </div>
+
+            </div>
+
+
+
+            <hr />
+            <h5>Capacitacion:</h5>
+            <hr />
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Capacitaciones.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Capacitaciones.Nombre)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Capacitaciones.Nivel)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Capacitaciones.Nivel.Nombre)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Capacitaciones.FechaDesde)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Capacitaciones.FechaDesde)
+                    </dd>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Capacitaciones.FechaHasta)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Capacitaciones.FechaHasta)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Capacitaciones.Institucion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Capacitaciones.Institucion)
+                    </dd>
+                </div>
+            </div>
+
+            <hr />
+            <h5>Experiencia:</h5>
+            <hr />
+
+            <div class="row">
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Experiencias.Empresa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Experiencias.Empresa)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Experiencias.PuestoOcupado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Experiencias.PuestoOcupado)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Experiencias.Salario)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Experiencias.Salario)
+                    </dd>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Experiencias.FechaDesde)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Experiencias.FechaDesde)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Experiencias.FechaHasta)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Experiencias.FechaHasta)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Candidatos.Creado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Candidatos.Creado)
+                    </dd>
+                </div>
+            </div>
+        </dl>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+           @* @Html.ActionLink("Editar", "Edit", new { id = Model.Candidatos.Id }, htmlAttributes: new { @class = "btn btn-outline-success" })*@
+            @Html.ActionLink("Volver a la lista", "Index", "", htmlAttributes: new { @class = "btn btn-outline-info" })
+        </div>
     </div>
 </div>

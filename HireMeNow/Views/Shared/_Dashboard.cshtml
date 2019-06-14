@@ -4,55 +4,64 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - HireMeNow</title>
+    <title>@ViewBag.Title - InstaJobs</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.6/b-html5-1.5.6/datatables.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
 </head>
-<body>
-
-    <div class="container flui">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            @*<a class="navbar-brand" href="#">Navbar</a>*@
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            @Html.ActionLink("HireMeNow", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item">@Html.ActionLink("Dashboard", "Index", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Candidatos", "Index", "Candidatos", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Empleados", "Index", "Empleados", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Competencias", "Index", "Competencias", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Departamentos", "Index", "Departamentos", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Puestos", "Index", "Puestos", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Estados", "Index", "Estados", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Idiomas", "Index", "Idiomas", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Niveles", "Index", "Niveles", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Niveles Riesgos", "Index", "NivelRiesgos", new { area = "" }, new { @class = "nav-link" })</li>
-
-                </ul>
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-sm   navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @Html.ActionLink("InstaJobs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item">@Html.ActionLink("Dashboard", "Index", "Dashboard", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mantenimientos
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @Html.ActionLink("Candidatos", "Index", "Candidatos", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Empleados", "Index", "Empleados", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Competencias", "Index", "Competencias", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Departamentos", "Index", "Departamentos", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Puestos", "Index", "Puestos", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Estados", "Index", "Estados", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Idiomas", "Index", "Idiomas", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Niveles", "Index", "Niveles", new { area = "" }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Niveles Riesgos", "Index", "NivelRiesgos", new { area = "" }, new { @class = "dropdown-item" })
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
-    </div>
+    </header>
+
+
 
 
     <div class="container body-content">
         @RenderBody()
     </div>
 
-    <footer class="container"></footer>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - InstantJobs - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.6/b-html5-1.5.6/datatables.min.js"></script>
 </body>
 </html>

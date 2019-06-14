@@ -21,90 +21,95 @@
     }
 </style>
 
-<hr />
+<div class="d-flex align-items-center p-3 my-3 text-black-50 bg-info rounded shadow-sm">
+    <div class="lh-100">
+        <h2 class="mb-3 text-white lh-100">Puestos</h2>
+        @Html.ActionLink("Nuevo Puesto", "Create", "", htmlAttributes: new { @class = "btn btn-primary" })
+    </div>
+</div>
+<div class="my-3 p-3 bg-white rounded shadow-lg">
+    <div class=" text-muted pt-3">
+        @*<svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>*@
+        <p class="media-body pb-3 mb-3 lh-125  border-gray d-flex align-items-center">
+            <table class="table table-borderless" id="puestos">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SalarioMin)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SalarioMax)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Departamentos.Departamentos)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.Competencias.Nombre)
+                            </th>*@
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.NivelRiesgos.Nombre)
+                            </th>*@
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.Estados.Estados)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Creado)
+                                </th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SalarioMin)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SalarioMax)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Departamentos.Departamentos)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Competencias.Nombre)
+                                </td>*@
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.NivelRiesgos.Nombre)
+                                </td>*@
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.Estados.Estados)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Creado)
+                                </td>*@
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-success" })
+                                @Html.ActionLink("Detalles", "details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-info" })
+                                @*@Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-danger js-delete" })*@
+                                <button data-puesto-id="@item.Id" class="btn btn-outline-danger js-delete">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
 
-<h2>Listado de Puestos</h2>
-<hr />
 
-<p>
-    @Html.ActionLink("Nuevo Puesto", "Create", "", htmlAttributes: new { @class = "btn btn-outline-primary" })
-</p>
-<table class="table" id="puestos">
-    <thead class="thead-light">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SalarioMin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SalarioMax)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Departamentos.Departamentos)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Competencias.Nombre)
-            </th>*@
-            @*<th>
-                    @Html.DisplayNameFor(model => model.NivelRiesgos.Nombre)
-                </th>*@
-            <th>
-                @*@Html.DisplayNameFor(model => model.Estados.Estados)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Creado)
-                    </th>*@
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SalarioMin)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SalarioMax)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Departamentos.Departamentos)
-                </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.Competencias.Nombre)
-                </td>*@
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.NivelRiesgos.Nombre)
-                </td>*@
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.Estados.Estados)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Creado)
-                </td>*@
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-success" })
-                    @Html.ActionLink("Detalles", "details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-info" })
-                    @*@Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-danger js-delete" })*@
-                    <button data-puesto-id="@item.Id" class="btn btn-outline-danger js-delete">Eliminar</button>
-                </td>
-            </tr>
-        }
-    </tbody>
-   
-
-</table>
+            </table>
+        </p>
+    </div>
+</div>
 
 @section scripts
 {
     <script>
         $(document).ready(function () {
 
-           var table = $("#puestos").DataTable();
+            var table = $("#puestos").DataTable();
 
             $("#puestos").on("click", ".js-delete", function () {
                 var button = $(this);

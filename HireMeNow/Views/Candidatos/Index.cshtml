@@ -20,13 +20,14 @@
     }
 </style>
 
-<hr />
+<div class="d-flex align-items-center p-3 my-3 text-black-50 bg-info rounded shadow-sm">
+    <div class="lh-100">
+        <h2 class="mb-3 text-white lh-100">Candidatos</h2>
+        @Html.ActionLink("Nuevo Candidato", "Create", "", htmlAttributes: new { @class = "btn btn-primary" })
 
-<h2>Listado de Candidatos</h2>
-<hr />
-<p>
-    @Html.ActionLink("Nuevo Candidato", "Create", "", htmlAttributes: new { @class = "btn btn-outline-primary" })
-</p>
+    </div>
+</div>
+
 <table class="table" id="candidato">
     <thead class="thead-light">
         <tr>
@@ -118,12 +119,9 @@
 {
     <script>
         $(document).ready(function () {
-
             var table = $("#candidato").DataTable();
-
             $("#candidato").on("click", ".js-new", function () {
                 var button = $(this);
-
                 bootbox.confirm("Seguro que deseas contratar este candidato", function (result) {
                     if (result) {
                         $.ajax({
@@ -143,10 +141,9 @@
                     }
                 });
             });
-
             $("#candidato").on("click", ".js-delete", function () {
                 var button = $(this);
-               
+
                 bootbox.confirm({
                     title: "Eliminar Candidato",
                     message: "Seguro que deseas eliminar este candidato?",
@@ -165,14 +162,12 @@
                                 method: "POST",
                                 success: function () {
                                     table.row(button.parents("tr")).remove().draw();
-
                                 }
                             });
                         }
                     }
                 });
             });
-
         });
     </script>
 }

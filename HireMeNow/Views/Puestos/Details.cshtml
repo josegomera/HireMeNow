@@ -5,104 +5,105 @@
     Layout = "~/Views/Shared/_Dashboard.cshtml";
 }
 
-<style>
-    h2 {
-        text-align: center;
-    }
-</style>
-<hr />
-<h2>Detalles del Puesto</h2>
-<hr />
-
-<div>
-    <dl class="dl-horizontal">
-        <div class="row">
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Puestos.Competencias.Nombre)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Puestos.Competencias.Nombre)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Puestos.Departamentos.Departamentos)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Puestos.Departamentos.Departamentos)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Puestos.Estados.Estados)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Puestos.Estados.Estados)
-                </dd>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Puestos.NivelRiesgos.Nombre)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Puestos.NivelRiesgos.Nombre)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Puestos.Nombre)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Puestos.Nombre)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Puestos.SalarioMin)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Puestos.SalarioMin)
-                </dd>
-            </div>
-        </div>
-
-
-
-        <div class="row">
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Puestos.SalarioMax)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Puestos.SalarioMax)
-                </dd>
-            </div>
-            <div class="col-md-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Puestos.Creado)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Puestos.Creado)
-                </dd>
-            </div>
-        </div>
-
-    </dl>
+<div class="d-flex align-items-center p-3 my-3 text-black-50 bg-info rounded shadow-sm">
+    <div class="lh-100">
+        <h2 class="mb-3 text-white lh-100">Detalles del Puesto</h2>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Puestos.Id }, htmlAttributes: new { @class = "btn btn-outline-success" })
-    @Html.ActionLink("Volver a la lista", "Index", "", htmlAttributes: new { @class = "btn btn-outline-info" })
-</p>
+
+
+<div class="my-3 p-3 bg-white rounded shadow-lg">
+
+    <div>
+        <dl class="dl-horizontal">
+            <div class="row">
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Puestos.Competencias.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Puestos.Competencias.Nombre)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Puestos.Departamentos.Departamentos)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Puestos.Departamentos.Departamentos)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Puestos.Estados.Estados)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Puestos.Estados.Estados)
+                    </dd>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Puestos.NivelRiesgos.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Puestos.NivelRiesgos.Nombre)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Puestos.Nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Puestos.Nombre)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Puestos.SalarioMin)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Puestos.SalarioMin)
+                    </dd>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Puestos.SalarioMax)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Puestos.SalarioMax)
+                    </dd>
+                </div>
+                <div class="col-md-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Puestos.Creado)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Puestos.Creado)
+                    </dd>
+                </div>
+            </div>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Puestos.Id }, htmlAttributes: new { @class = "btn btn-outline-success" })
+        @Html.ActionLink("Volver a la lista", "Index", "", htmlAttributes: new { @class = "btn btn-outline-info" })
+    </p>
+</div>
