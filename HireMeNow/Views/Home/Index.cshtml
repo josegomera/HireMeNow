@@ -2,29 +2,33 @@
 
 @{
     ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="jumbotron" id="search">
+<div class="jumbotron bg-info rounded shadow-lg" id="search">
     <h1 class="display-3">Hey look up! take a look to our new positions</h1>
     <hr class="my-4">
-    <p>It's time to get a new job and to increase your profits with our new jobs offers.</p> 
+    <p>It's time to get a new job and to increase your profits with our new jobs offers.</p>
 </div>
+
 
 <div class="row">
     @foreach (var item in Model)
     {
 
         <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">@Html.DisplayFor(model => item.Nombre)</h5>
-                    <p class="card-text">
-                        @Html.DisplayFor(model => item.Competencias.Descripcion)
-                    </p>
-                    @Html.ActionLink("Apply", "Create", "", htmlAttributes: new { @class = "btn btn-outline-info js-add" })
+            <div class="mb-4 bg-white rounded shadow-lg">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(model => item.Nombre)</h5>
+                        <p class="card-text">
+                            @Html.DisplayFor(model => item.Competencias.Descripcion)
+                        </p>
+                        @Html.ActionLink("Apply", "Create", "", htmlAttributes: new { @class = "btn btn-outline-info js-add" })
+                    </div>
                 </div>
             </div>
         </div>
+
     }
 </div>
-       

@@ -7,43 +7,44 @@
     <title>@ViewBag.Title - InstaJobs</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <style>
-        footer {
-            position: relative;
-            top: -5%;
-            height: 5%;
-            background-color: rgb(35, 42, 48);
-            margin-top:10%;
-            padding-top:15%;
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.6/b-html5-1.5.6/datatables.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="~/Content/Site.css" rel="stylesheet" />
 
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            @*<a class="navbar-brand" href="#">Navbar</a>*@
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            @Html.ActionLink("InstaJobs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link"})</li>
-                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
+</head>
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-sm   navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @Html.ActionLink("InstaJobs", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                </div>
             </div>
         </nav>
-    </div>
-
+    </header>
 
     <div class="container body-content">
         @RenderBody()
     </div>
 
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - InstantJobs - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.6/b-html5-1.5.6/datatables.min.js"></script>
 </body>
 </html>

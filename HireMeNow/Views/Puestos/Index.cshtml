@@ -92,7 +92,7 @@
                                 @Html.ActionLink("Editar", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-success" })
                                 @Html.ActionLink("Detalles", "details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-info" })
                                 @*@Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-outline-danger js-delete" })*@
-                                <button data-puesto-id="@item.Id" class="btn btn-outline-danger js-delete">Eliminar</button>
+                                @*<button data-puesto-id="@item.Id" class="btn btn-outline-danger js-delete">Eliminar</button>*@
                             </td>
                         </tr>
                     }
